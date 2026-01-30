@@ -6,7 +6,7 @@
 
 📂 Files will be listed below:
 - `C101_1.cpp` | 5 Minute Interview
-- `C101_2.cpp` | Part 1 of Lab
-- `C101_3.cpp` | Part 2 of Lab
+- `Lab01_1.cpp` | Part 1 of Lab
+- `Lab01_2.cpp` | Part 2 of Lab
 
 📹 Watch the [5‑minute interview](https://www.youtube.com/watch?v=negYYQdZIIc)<br/>
