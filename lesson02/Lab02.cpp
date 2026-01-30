@@ -1,11 +1,10 @@
 /* Imani Hollie 01/16/2026
-   Lesson 2 Lab: Write a code to produce a restaurant bill.
-   - Prompt the user to enter the meal charge
-   - Calculate the tax (6.75% of the meal cost)
-   - Add the tax and charge to get the subtotal
-   - Calculate the tip (20% of the subtotal)
-   - Calculate the total bill by adding the tip
-   Display the meal cost, tax amount, tip amount, and total bill.
+   Lesson 2 Lab: Write a program that can be used as a tutor.
+   The program should display two random numbers to be added
+   - Display two randomly generated numbers less than or equal to 100
+   - Pause and calculate the total of those two numbers
+   - Prompt the student to press enter to see the solution
+   - Display the solution to the problem
 */
 
 #include <iostream>  // Allows use of input/output streams (cout, cin)
@@ -39,12 +38,10 @@ int main() {  // Program execution starts here
 
   // Output (formatted to 2 decimal places)
   cout << fixed << setprecision(2);
-  cout << "\n***Bill************\n";
-  cout << "Charge   : $" << charge   << endl;
-  cout << "Tax      : $" << tax      << endl;
-  cout << "Subtotal : $" << subtotal << endl;
-  cout << "Tip      : $" << tip      << endl;
-  cout << "Total    : $" << total    << endl;
+  cout << "  " << num1 << endl;
+  cout << "+ " << num2 << endl;
+  cout << "-----" << endl;
+  cout << "  " << total << endl;
   
   return 0;  // Ends the program
 }
