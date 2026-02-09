@@ -10,11 +10,11 @@
 #include <iomanip>   // Allows use of formatting tools (fixed, setprecision)
 #include <string>    // Allows use of string
 #include <limits>    // Allows use of properties and bounds (numeric_limits)
-#include <algorithm> // Allows use of _ (swap)
+#include <algorithm> // Allows use of swap() for reording numbers
 using namespace std; // Allows use of standard library without std:: prefix
 
 // Function Prototypes (Modularization)
-void getRunnerData(string &name, double &time);
+void getRunnerData(string &name, double &time, int count);
 void sortAndDisplay(string name1, double time1, string name2, double time2, string name3, double time3);
 
 int main() {  // Program execution starts here
@@ -23,12 +23,9 @@ int main() {  // Program execution starts here
   double time1, time2, time3;
 
   // Get user input and call getRunnerData()
-  cout << "Runner 1 Details:" << endl;
-  getRunnerData(name1, time1);
-  cout << "Runner 2 Details:" << endl;
-  getRunnerData(name2, time2);
-  cout << "Runner 3 Details:" << endl;
-  getRunnerData(name3, time3);
+  getRunnerData(name1, time1, 1);
+  getRunnerData(name2, time2, 2);
+  getRunnerData(name3, time3, 3);
 
   // Process and output and call sortAndDisplay()
   sortAndDisplay(name1, time1, name2, time2, name3, time3);
@@ -37,15 +34,16 @@ int main() {  // Program execution starts here
 }
 
 // Function to handle input and validation
-void getRunnerData(string &name, double &time) {
+void getRunnerData(string &name, double &time, int count) {
   // Get user input for name
+  cout << "Runner " << count << " Details:" << endl;
   cout << "Enter Runner Name: ";
-  getline(cin, name);
+  getline(cin>> ws, name); // ws skips leftover newlines so names with spaces work
 
   // Get user input and validate if time is numeric and positive
   while (true) { // While loop repeats until we break
      cout << "Enter Finish Time: ";                       // Get user input
-     if (cin >> time && time >= 0.0) break;           // If loop to validate if input is numeric AND positive
+     if (cin >> time && time >= 0.0) break;               // If loop to validate if input is numeric AND positive
      
      cout << "ERROR: Invalid Input" << endl;              // ERROR Message for invalid input
      cin.clear();                                         // Clear the fail state flag
@@ -54,27 +52,16 @@ void getRunnerData(string &name, double &time) {
 }
 
 // Function to determine placement and display results
-void sortAndDisplay(string name1, double time1, string name2, double time2, string name3, double time3) {
-  // Compare 1st and 2nd runners
-  if (time1 > time2) {
-    swap(time1, time2);
-    swap(name1, name2);
-  }
-  // Compare 2nd and 3rd runners
-  if (time2 > time3) {
-    swap(time2, time3);
-    swap(name2, name3);
-  }
-  // Compare 1st and 2nd runners to catch shifts
-  if (time1 > time2) {
-    swap(time1, time2);
-    swap(name1, name2);
-  }
+void sortAndDisplay(string n1, double t1, string n2, double t2, string n3, double t3) {
+  // Sort by comparing pairs and swapping if out of order
+  if (t1 > t2) { swap(t1, t2); swap(n1, n2); } // Compare 1st and 2nd runners
+  if (t2 > t3) { swap(t2, t3); swap(n2, n3); } // Compare 2nd and 3rd runners
+  if (t1 > t2) { swap(t1, t2); swap(n1, n2); } // Compare 1st and 2nd runners to catch shifts
   
-  // Output (formatted to 2 decimal places)
+  // Output (formatted name to the left and to 15 char and time to 2 decimal places)
   cout << fixed << setprecision(2);
   cout << "\n***PODIUM***\n";
-  cout << "First  : " << name1 << " Time  : " << time1 <<endl;
-  cout << "Second : " << name2 << " Time  : " << time2 <<endl;
-  cout << "Third  : " << name3 << " Time  : " << time3 <<endl;
+  cout << "First  : " << left << setw(15) << n1 << " Time  : " << t1 <<endl;
+  cout << "Second : " << left << setw(15) << n2 << " Time  : " << t2 <<endl;
+  cout << "Third  : " << left << setw(15) << n3 << " Time  : " << t3 <<endl;
 }
