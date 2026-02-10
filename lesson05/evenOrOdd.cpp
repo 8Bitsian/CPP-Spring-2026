@@ -10,22 +10,50 @@
 using namespace std;
 
 // Function Prototypes (Modularization)
+void menu();
+void continueMenu(bool &repeatOperation, bool &exitProgram);
 int generateNumber();
 bool isOdd(int n);
 void getInput(int num, bool isOddFlag);
 
 int main() {  // 1. Program execution starts here
    srand(static_cast<unsigned>(time(nullptr)));
-  
-   // Call functions (generateNumber() and isOdd();
-   int num = generateNumber();
-   bool flag = isOdd(num);
-
-   // Get user input
-   getInput(num, flag);
-  
+   menu(); // Call menu() function
    return 0;  // End program
 }
+
+void menu() {
+   bool exitProgram = false;
+   
+   while (!exitProgram) {
+      cout << "\n=== Even or Odd Game ===\n";
+      cout << "1. Play Game\n";
+      cout << "2. EXIT\n";
+      cout << "Choose an option: ";
+      int choice;
+      cin >> choice; 
+      
+      switch (choice) {
+         case 1: {
+            bool repeatOperation = true;
+            while (repeatOperation && !exitProgram) {
+               int num = generateNumber();
+               bool flag = isOdd(num);
+               getInput(num, flag);
+               continueMenu(repeatOperation, exitProgram);
+            }
+            break;
+         }
+         case 2:
+            exitProgram = true;
+            break;
+         default:
+            cout << "Invalid choice. Try again.\n";
+      }
+   } cout << "\nExiting program...\n";
+}
+
+void continueMenu(bool &repeatOperation, bool &exitProgram) { int choice = 0; cout << "\n\n=== Menu ===\n"; cout << "1. Try Again\n"; cout << "2. Return to Main Menu\n"; cout << "3. EXIT\n"; cout << "Choose an option: "; cin >> choice; switch (choice) { case 1: repeatOperation = true; break; case 2: repeatOperation = false; break; case 3: exitProgram = true; break; default: cout << "ERROR: Invalid Input. Returning to Main Menu.\n"; repeatOperation = false; } }
 
 int generateNumber() { // 2. Generate random number
   return rand() % 100 + 1; // Yeilds values from 1 to 100 (inclusive)
