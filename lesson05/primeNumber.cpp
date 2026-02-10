@@ -16,10 +16,12 @@ void getInput(int num, bool prime);
 
 int main() {  // 1. Program execution starts here
    srand(static_cast<unsigned>(time(nullptr)));
-  
-   // Call functions (generateNumbers() and isPrime();
+   
+   // Define variables w/functions (generateNumbers(), isPrime())
    int num = generateNumber();
    bool prime = isPrime(num);
+
+   // Call function while passing parameters (num, prime)
    getInput(num, prime);
   
    return 0;  // End program
