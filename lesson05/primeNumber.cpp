@@ -16,12 +16,10 @@ void getInput(int num, bool prime);
 
 int main() {  // 1. Program execution starts here
    srand(static_cast<unsigned>(time(nullptr)));
-   
-   // Define variables w/functions (generateNumbers(), isPrime())
+  
+   // Call functions (generateNumbers() and isPrime();
    int num = generateNumber();
    bool prime = isPrime(num);
-
-   // Call function while passing parameters (num, prime)
    getInput(num, prime);
   
    return 0;  // End program
@@ -55,7 +53,7 @@ void getInput(int num, bool prime) { // 4. Program continues here to get user in
   bool userSaysPrime = (answer == 1);
 
   if (userSaysPrime == prime)
-    cout << "Correct!\n";
+    cout << "Correct!";
   else
-    cout << "Incorrect.\n";
+    cout << "Incorrect.";
 }
