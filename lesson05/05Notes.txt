@@ -1,0 +1,125 @@
+Chapter 6: Functions
+Imani Hollie 02/16/2026
+
+*** DEFINING & CALLING FUNCTIONS ***
+====================================
+A function call is a statement that causes a function to execute.
+A function definition contains the statements that make up the function.
+
+A function definition are the statements that define a function.
+A function definition includes two parts:
+- Function Header: The first line of a function definition
+  - Return Type: The data type of the value that is sent from the function
+  - Function Name: How you refer to the function (same rules that apply to variable names)
+  - Parameter List: The list of variables that hold the values being passed to the function
+- Function Body: The set of statements that perform the function's operation (Enclosed in braces)
+
+General format for a function is as follows:
+returnType functionName (parameterType parameterName) {
+  // Function Body
+  return value; // Only if returnType is NOT void)
+}
+
+The main function is declared to return an int valyue to the operating system.
+The "return 0;" statement causes the value "0" to be returned when the main() finishes executing.
+int main() {
+  cout << "Hello World!\n";
+  return 0;
+}
+
+It isn't necessary for all functions to return a value.
+void functions perform one or more statements, and then terminate:
+void displayMessage () {
+  cout << "Hello from the function displayMessage.\n";
+}
+The function has no return statmente since it does not return a value to the part of the program that executes it.
+
+A function is executed when it is called.
+Function main() is automatically called when a program starts.
+All other functions must be executed by function call statements.
+When a function is called, the program branches to that function and executes the statements in its body:
+
+#include <iostream>
+using namespace std;
+// Function displayMessage displays a greeting
+void displayMessage () {
+  cout << "Hello from the function displayMessage.\n";
+}
+// Function main calls displayMessage
+int main () {
+  cout << "Hello from main.\n";
+  displayMessage();
+  cout << "Back in function main again.\n";
+  return 0;
+}
+// Program Output:
+// Hello from main.
+// Hellow from the function displayMessage.
+// Back in function main again.
+
+It is possible to have many functions and function calls in a program.
+Functions may also be called in a hierarchical, or layered, fashion.
+
+*** FUNCTIONS PROTOTYPES ***
+============================
+A function prototype elminates the need to place a function definition before all calls of the function.
+Function prototypes are also known as function declarations.
+
+#include <iostream>
+using namespace std;
+// Function Prototypes
+void first();
+void second();
+// Function main calls first() and second()
+int main () {
+  cout << "Hello from main.\n";
+  first();
+  second();
+  cout << "Back in function main again.\n";
+  return 0;
+}
+// Function first() displays a message
+void first() {
+  cout << "I am now inside the function first.\n";
+}
+// Function second() displays a message
+void second() {
+  cout << "I am now inside the function second.\n";
+}
+// Program Output:
+// Hello from main.
+// I am now inside the function first.
+// I am now inside the function second.
+// Back in function main again.
+
+When a function is called, the program may send values into the function.
+Values sent into a function are called arguments. By using parameters
+(a vairable that recieves an argument that has been passed into a function),
+you can design your own functions that accept data this way.
+
+void displayValue(int num) {
+  cout << "The value is " << num << endl;
+}
+
+Note the int variable definition inside the parenthese (int num).
+The variable num is a parameter. This enables the function displayValue
+to accept an integer value as an argument.
+
+Often, it's useful to pass several arguments into a function.
+In the function header, the parameter list contains variable definitions separated by commas.
+Warning: Each parameter variable in a parameter list must have a data type listed before its name.
+
+void showSum(int, int, int);
+
+int main () {
+  int value1, value2, value3;
+  count << "Enter three integers and I'll dispplay thier sum: ";
+  cin >> value1 >> value2 >> value3;
+  showSum(value1, value2, value3);
+  return 0;
+}
+
+void showSum(int num1, int num2, int num3) {
+  cout << (num1 + num2 + num3) << endl;
+}
+
