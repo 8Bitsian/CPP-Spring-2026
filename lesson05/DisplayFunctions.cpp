@@ -19,29 +19,30 @@ int calculateCarAge(int currentYear, int carYear);
 int main() {
   // Declare variables
   string make, model;
-  int year;
+  int year, age;
   double price;
 
   // Get user input
   cout << "Enter the car make: ";
-  cin >> make;
+  getline(cin, make);
   cout << "Enter the car model: ";
-  cin >> model;
+  getline(cin, model);
   cout << "Enter the car year: ";
   cin >> year;
   cout << "Enter the car price: ";
   cin >> price;
   
   // Call functions
-  displayChar(make, model, year, price)
-  int age = calculateCarAge(2026, year) // example current year
-  cout << "Car age: " << age << " years\n";
+  displayChar(make, model, year, price);
+  
+  age = calculateCarAge(2026, year);
+  cout << "Car Age: " << age << " years\n";
 
   return 0;
 }
 
 // displayChar()
-void displayChar(string make, stringmodel, int year, double price) {
+void displayChar(string make, string model, int year, double price) {
   // Display the make, model, year, and price of the car
   cout << "\nCar Information:\n";
   cout << "Make: " << make << endl;
@@ -52,6 +53,6 @@ void displayChar(string make, stringmodel, int year, double price) {
 
 // calculateCarAge()
 int calculateCarAge(int currentYear, int carYear) {
-  int time = currentYear - carYear
+  int time = currentYear - carYear;
   return time;
 }
