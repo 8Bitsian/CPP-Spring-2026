@@ -92,11 +92,12 @@ void second() {
 // I am now inside the function second.
 // Back in function main again.
 
+*** SENDING DATA INTO A FUNCTION ***
+====================================
 When a function is called, the program may send values into the function.
-Values sent into a function are called arguments. By using parameters
-(a vairable that recieves an argument that has been passed into a function),
-you can design your own functions that accept data this way.
-
+Values sent into a function are called arguments.
+Inside the function, the argument is recieved by a parameter, which is
+a variable that has been passed into a function:
 void displayValue(int num) {
   cout << "The value is " << num << endl;
 }
