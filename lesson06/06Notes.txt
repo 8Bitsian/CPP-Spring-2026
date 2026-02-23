@@ -1,0 +1,42 @@
+Chapter 7: Arrays & Vectors
+Imani Hollie 02/23/2026
+
+*** ARRAYS HOLD MULTIPLE VALUES ***
+====================================
+An array
+
+*** ACCESSING ARRAY ELEMENTS***
+====================================
+An array
+
+*** NO BOUNDS CHEKCING IN C++ ***
+====================================
+An array
+
+*** THE RANGE-BASED FOR LOOP ***
+====================================
+An array
+
+*** PROCESSING ARRAY CONTENTS ***
+====================================
+An array
+
+*** PARALLEL ARRAYS ***
+====================================
+An array
+
+*** ARRAYS AS FUCNTION ARGUMENTS ***
+====================================
+An array
+
+*** TWO-DIMENSIONAL ARRAYS ***
+====================================
+An array
+
+*** ARRAYS WITH THREE OR MORE DIMENSIONS ***
+====================================
+An array
+
+*** INTRODUCTION TO THE STL VECTOR ***
+====================================
+An array
