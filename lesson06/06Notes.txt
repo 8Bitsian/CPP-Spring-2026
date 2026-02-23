@@ -5,6 +5,35 @@ Imani Hollie 02/23/2026
 ====================================
 An array allows you to store and work with multiple values of the same data type.
 
+An array is a data structure that holds a group of values of the same data type.
+It works like a variable that can store several values, all of the same type.
+The values are stored together in consecutive memory locations.
+
+EX. data_Type array_Name[size_Declarator];
+
+The number inside the brackets is the array's size declaractor (an integer specifying the sixe of an array).
+It indicates the number of elements (a value stored in an array).
+An array's size declarator must be a constant integer expression greater than zero.
+It can be a literal value or a named constant.
+
+EX. const int NUM_DAYS = 6;
+    int days[NUM_DAYS];
+
+Arrays of any data type can be defined.\
+
+The amount of memory used by an array depends on the array's data type and the number of elements.
+The size of an array equals the size of an individual element multiplied by the number of elements in the array.
+
+Ex. short hours[6];
+    // A short uses 2 bytes, so this array uses 12 bytes
+
+Common data type sizes:
+- char = 1 byte
+- short = 2 bytes
+- int = 4 bytes
+- float = 4 bytes
+- double = 8 bytes
+
 *** ACCESSING ARRAY ELEMENTS***
 ====================================
 The individual elements of an array are assigned unique subscripts. These subscripts are used to access the elements.
