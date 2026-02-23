@@ -3,40 +3,43 @@ Imani Hollie 02/23/2026
 
 *** ARRAYS HOLD MULTIPLE VALUES ***
 ====================================
-An array
+An array allows you to store and work with multiple values of the same data type.
 
 *** ACCESSING ARRAY ELEMENTS***
 ====================================
-An array
+The individual elements of an array are assigned unique subscripts. These subscripts are used to access the elements.
 
 *** NO BOUNDS CHEKCING IN C++ ***
 ====================================
-An array
+C++ does not prevent you from overwriting an array's bounds
 
 *** THE RANGE-BASED FOR LOOP ***
 ====================================
-An array
+The range-based for loop is a loop that iterates once for each element in an array.
+Each time the loop iterates, it copies an element from the array to a variable.
+The range-based for loop was introduced in C++ 11.
 
 *** PROCESSING ARRAY CONTENTS ***
 ====================================
-An array
+Individual array elements are processed liek any other type of variable.
 
 *** PARALLEL ARRAYS ***
 ====================================
-An array
+By using the saame subscript, youy can build relationaships between data stored in two or more arrays.
 
 *** ARRAYS AS FUCNTION ARGUMENTS ***
 ====================================
-An array
+To pass an array as an argument to a function, pass the name of the array
 
 *** TWO-DIMENSIONAL ARRAYS ***
 ====================================
-An array
+A two-dimensional array is like several identical arrays put together.
+It is useful for storing multiple sets of data.
 
 *** ARRAYS WITH THREE OR MORE DIMENSIONS ***
 ====================================
-An array
+C++ does not limit the number of dimensions that an array may have. IT is possible to create arrauys with multiple dimensions, to model data that occur in multiple sets.
 
 *** INTRODUCTION TO THE STL VECTOR ***
 ====================================
-An array
+The Standard Template Library offers a vector data type, which in many ways, is superior to standard arrays.
