@@ -25,8 +25,8 @@
 using namespace std; // Allows use of standard library without std:: prefix
 
 // Function Prototypes (Modularization)
-void mainMenu(); // Create/Write to data file, Load values from file, Operate on values from file, Delete values from file, exit program
-void continueMenu(); // find lowest value, find highest value, compute total value, computer total average, exit to main menu, exit program
+int mainMenu(); // Create/Write to data file, Load values from file, Operate on values from file, Delete values from file, exit program
+int continueMenu(); // find lowest value, find highest value, compute total value, computer total average, exit to main menu, exit program
 void createFile(); // Prompt for a file name to create/overwrite
 void loadFile(); // Prompt for a file name to load
 void deleteFile(); // Prompt for a file name to delete
@@ -34,12 +34,9 @@ void analysisOps(); // Lowest Value, Highest Value, Total Values, Average of Val
 
 int main() {  // Program execution starts here
   // Declare variables
-  // main()
-int main() {
-  // Declare variables
   int option;
 
-  cout << "Enter the total reported automobile accidents for each region (-1 to Exit).\n" << endl;
+  cout << "Choose to  (-1 to Exit).\n" << endl;
 
   while (true) {
     // Call getNumAccidents() function for each division
@@ -54,11 +51,6 @@ int main() {
 
     cout << "\n\n=== REPORT COMPLETE. STARTING NEW REPORT ===\n\n";
   }
-
-  return 0;
-}
-
-  // Call functions
 
   return 0;  // Ends the program
 }
