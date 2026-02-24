@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
   vector<char> ONE = {'a', 'b', 'c'}; // 3 chars
-  vector<char> TWO = {'d', 'e', 'f', 'g', 'h'}; // 5 chars
+  vector<char> TWO = {'D', 'E', 'F', 'G', 'H'}; // 5 chars
 
   ONE.swap(TWO);
 
