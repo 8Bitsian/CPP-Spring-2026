@@ -25,94 +25,84 @@
 using namespace std; // Allows use of standard library without std:: prefix
 
 // Function Prototypes (Modularization)
-int mainMenu(); // Create/Write to data file, Load values from file, Delete values from file, Create Array, Operate Array, Exit program (-1)
-int operationMenu(); // // Lowest Value, Highest Value, Total Values, Average of Values within Arrays, Exit to main menu, exit program
-int continueMenu(); // Try again, exit to main meny, exit program (-1)
+int mainMenu();       // Create/Write to data file, Load values from file, Delete values from file, Create Array, Operate Array, Exit program (-1)
+int operationMenu();  // Lowest Value, Highest Value, Total Values, Average of Values within Arrays, Exit to main menu, exit program
+int continueMenu();   // Try again, exit to main meny, exit program (-1)
 
-void createFile(); // Prompt for a file name to create/overwrite
-void loadFile(); // Prompt for a file name to load
-void deleteFile(); // Prompt for a file name to delete
+void fileManipulation();
+void createFile();    // Method createFile() propmts user to create/overwrite a file
+void loadFile();      // Method loadFile() propmts user to load a file
+void deleteFile();    // Method deleteFile() propmts user to delete a file
 
-// Method createFile() propmts user to create a dynamic array within a file
-void createArray() {}
-// Method createFile() propmts user to load a dynamic array within a file
-void loadArray() {}
-// Method createFile() propmts user to delete dynamic array within a file
-void deleteArray() {}
+void arrayManipulation();
+void createArray();   // Method createArray() propmts user to create a fixed array within a file
+void loadArray();     // Method loadArray() propmts user to load a fixed array within a file
+void deleteArray();   // Method deleteArray() propmts user to delete fixed array within a file
 
-// Lowest Value, Highest Value, Total Values, Average of Values within Arrays
-void analysisOps();
+void analysisOps();   // Method analysisOps() gets the lowest value, highest value, total value or avergae vaule within the arrays
+void lowValue();
+void highValue();
+void totalValue();
+void averageValue();
 
-int main() {  // Program execution starts here
-  // Declare variables
-  int option;
+int main() { // Program execution starts here
+   // Declare variables
+   int option = 0;
 
-  cout << "Choose to  (-1 to Exit).\n" << endl;
+   cout << "Choose an option (-1 to Exit).\n" << endl;
 
-  while (true) {
-    // Call getNumAccidents() function for each division
-    north = getNumAccidents("North");
-    south = getNumAccidents("South");
-    east = getNumAccidents("East");
-    west = getNumAccidents("West");
-    central = getNumAccidents("Central");
-    
-    // Call findLowest() function to calculate and output the lowest accident-prone region
-    findLowest(north, south, east, west, central);
+   while (option != -1) {
+      option = mainMenu();
 
-    cout << "\n\n=== REPORT COMPLETE. STARTING NEW REPORT ===\n\n";
-  }
+      switch (option) {
+         case 1: fileManipulation(); break;
+         case 2: arrayManipulation(); break;
+         case 3: analysisOps(); break;
+         
+         case -1:
+            cout << "Exiting program...\n";
+            break;
+         
+         default:
+            cout << "ERROR: Invalid Input\n";
+      }
 
-  return 0;  // Ends the program
+      if (option != -1)
+         cout << "\n=== REPORT COMPLETE. STARTING NEW REPORT ===\n\n";
+   }
+
+   return 0; // Ends the program
 }
 
-/* Method mainMenu() prints main menu options:
-   - Create a data file
-   - Load values from a file
-   - Operate on values from a file
-   - Delete values from file
-   - Exit program
-*/
-void mainMenu() {
-  
-}
+int mainMenu() {
+   int choice;
 
-/* Method continueMenu() prints continue menu options:
-   - Try again
-   - Exit to main menu
-   - Exit program
-*/
-void continueMenu() {
+   cout << "=== MAIN MENU ===\n";
+   cout << "1. File Manipulation\n";
+   cout << "2. Array Manipulation\n";
+   cout << "3. Analysis Operations\n";
+   cout << "-1. EXIT PROGRAM\n";
+
+   cout << "Enter Option: \n";
+   cin >> choice;
+
+   // Do input validation
    
+   return choice;
 }
 
-// Method createFile() propmts user for a file name to create/overwrite
-void createFile() {
-   
-}
+int continueMenu() {
+   int choice;
 
-// Method loadFile() propmts user for a file name to load
-void loadFile() {
-   
-}
+   cout << "=== CONTINUE MENU ===\n";
+   cout << "1. Try Again\n";
+   cout << "2. Main Menu\n";
+   cout << "-1. EXIT PROGRAM\n";
 
-// Method deleteFile() propmts user for a file name to delete
-void deleteFile() {
-   
-}
+   cout << "Enter Option: \n";
+   cin >> choice;
 
-// Method createFile() propmts user to create a dynamic array within a file
-void createArray() {
+   // Do input validation
    
+   return choice;
 }
-// Method createFile() propmts user to load a dynamic array within a file
-void loadArray() {
-   
-}
-// Method createFile() propmts user to delete dynamic array within a file
-void deleteArray() {
-   
-}
-
-// Method analysisOps() propmts user to choose 
-void analysisOps(); // Lowest Value, Highest Value, Total Values, Average of Values
