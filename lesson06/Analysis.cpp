@@ -25,12 +25,23 @@
 using namespace std; // Allows use of standard library without std:: prefix
 
 // Function Prototypes (Modularization)
-int mainMenu(); // Create/Write to data file, Load values from file, Operate on values from file, Delete values from file, exit program
-int continueMenu(); // find lowest value, find highest value, compute total value, computer total average, exit to main menu, exit program
+int mainMenu(); // Create/Write to data file, Load values from file, Delete values from file, Create Array, Operate Array, Exit program (-1)
+int operationMenu(); // // Lowest Value, Highest Value, Total Values, Average of Values within Arrays, Exit to main menu, exit program
+int continueMenu(); // Try again, exit to main meny, exit program (-1)
+
 void createFile(); // Prompt for a file name to create/overwrite
 void loadFile(); // Prompt for a file name to load
 void deleteFile(); // Prompt for a file name to delete
-void analysisOps(); // Lowest Value, Highest Value, Total Values, Average of Values
+
+// Method createFile() propmts user to create a dynamic array within a file
+void createArray() {}
+// Method createFile() propmts user to load a dynamic array within a file
+void loadArray() {}
+// Method createFile() propmts user to delete dynamic array within a file
+void deleteArray() {}
+
+// Lowest Value, Highest Value, Total Values, Average of Values within Arrays
+void analysisOps();
 
 int main() {  // Program execution starts here
   // Declare variables
@@ -55,7 +66,7 @@ int main() {  // Program execution starts here
   return 0;  // Ends the program
 }
 
-/* Function mainMenu() prints main menu options:
+/* Method mainMenu() prints main menu options:
    - Create a data file
    - Load values from a file
    - Operate on values from a file
@@ -64,9 +75,44 @@ int main() {  // Program execution starts here
 */
 void mainMenu() {
   
-} 
-void continueMenu(); // find lowest value, find highest value, compute total value, computer total average, exit to main menu, exit program
-void createFile(); // Prompt for a file name to create/overwrite
-void loadFile(); // Prompt for a file name to load
-void deleteFile(); // Prompt for a file name to delete
+}
+
+/* Method continueMenu() prints continue menu options:
+   - Try again
+   - Exit to main menu
+   - Exit program
+*/
+void continueMenu() {
+   
+}
+
+// Method createFile() propmts user for a file name to create/overwrite
+void createFile() {
+   
+}
+
+// Method loadFile() propmts user for a file name to load
+void loadFile() {
+   
+}
+
+// Method deleteFile() propmts user for a file name to delete
+void deleteFile() {
+   
+}
+
+// Method createFile() propmts user to create a dynamic array within a file
+void createArray() {
+   
+}
+// Method createFile() propmts user to load a dynamic array within a file
+void loadArray() {
+   
+}
+// Method createFile() propmts user to delete dynamic array within a file
+void deleteArray() {
+   
+}
+
+// Method analysisOps() propmts user to choose 
 void analysisOps(); // Lowest Value, Highest Value, Total Values, Average of Values
