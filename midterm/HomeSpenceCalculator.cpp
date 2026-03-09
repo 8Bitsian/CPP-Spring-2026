@@ -133,7 +133,7 @@ asks the user for the month range, and then starts the main menu.
 int main() {
     // Display program header and information about exit sentinel
     cout << "=== HOME EXPENSE CALCULATOR ===\n";
-    cout << "Enter -1 at any menu to exit.\n\n";
+    cout << "Enter -1 at any menu to exit.\n";
     getMonthRange();    // Ask user for start/end month range
     mainMenu();         // Begin main menu loop
     return 0;           // End program successfully
@@ -146,7 +146,7 @@ and calculates how many months are included in the expense totals.
 ------------------------------------------------------------------- */
 void getMonthRange() {
     // Display section header and explain directions
-    cout << "--- MONTH RANGE ---\n";
+    cout << "\n--- MONTH RANGE ---\n";
     cout << "Enter a range of months...\n";
     cout << "Ex. 1 is January, 2 is February, etc.\n\n";
 
@@ -161,7 +161,7 @@ void getMonthRange() {
     if (totalMonths < 1)
         totalMonths = 1;
 
-    cout << "\nCalculating expenses for: " << totalMonths << " month(s).\n\n";
+    cout << "\nCalculating expenses for: " << totalMonths << " month(s).\n";
 }
 
 /* -------------------------------------------------------------------
@@ -191,7 +191,7 @@ double totalExpenses() {
     
     // Output formatted total expenses
     cout << fixed << setprecision(2);
-    cout << "\nTotal Expenses: $" << total << "\n\n";
+    cout << "\nTotal Expenses: $" << total << "\n";
 
     return total;   // Return the computed total
 }
@@ -215,12 +215,11 @@ part of the program based on their input. Loops until the user exits.
 int mainMenu() {
     while (true) { // Iterate menu until the user returns or exits
         // Display main menu options
-        cout << "===== MAIN MENU =====\n";
+        cout << "\n===== MAIN MENU =====\n";
         cout << "1. Redefine Month Range\n";
         cout << "2. Input Monthly Expenses\n";
-        cout << "3. View Total Expenses\n";
-        cout << "4. View Budget Comparisons\n";
-        cout << "5. Category-by-Category Report\n";
+        cout << "3. View Budget Comparisons\n";
+        cout << "4. View Category Report\n";
         cout << "(-1) Exit Program\n\n";
         
         // Get user input (Sentinal Values: -1 and 'M')
@@ -228,11 +227,10 @@ int mainMenu() {
         switch (c) {
             case '1': getMonthRange(); break;
             case '2': expensesMenu(); break;
-            case '3': totalExpenses(); break;
-            case '4': budgetComparisons(); break;
-            case '5': categoryReport(); break;
+            case '3': budgetComparisons(); break;
+            case '4': categoryReport(); break;
             case 'X': // -1 exit program
-                cout << "\nExiting program...\n";
+                cout << "\nExiting program...";
                 return EXIT_SENTINEL;
         }
     }
@@ -356,15 +354,15 @@ void budgetComparisons() {
     cout << fixed << setprecision(2);
 
     // Show the comparison header and totals
-    cout << "\n=== BUDGET COMPARISON ===\n";
+    cout << "\n===== BUDGET COMPARISON =====\n";
     cout << "Total Budget:   $" << budget << "\n";
     cout << "Total Expenses: $" << actual << "\n";
 
     // Calculate if total is under/overbudget
     if (actual > budget)
-        cout << "You are OVER budget by $" << actual - budget << "\n\n";
+        cout << "You are OVER budget by $" << actual - budget << "\n";
     else
-        cout << "You are UNDER budget by $" << budget - actual << "\n\n";
+        cout << "You are UNDER budget by $" << budget - actual << "\n";
 }
 
 void categoryReport() {
@@ -377,28 +375,22 @@ void categoryReport() {
         // Calculate if Positive => over budget/Negative => under
         double diff = c.actual - c.budget;
 
-        // Choose an ANSI color code:
-        string color =
-            diff > 0 ? "\033[31m" :   // OVER => red
-            diff < 0 ? "\033[32m" :   // UNDER => green
-                       "\033[0m";     // EXACT => default color
-
         // Print category header and values
         cout << "\n" << c.name << ":\n";
-        cout << "  Budgeted: $" << c.budget << "\n";
-        cout << "  Actual:   $" << c.actual << "\n";
+        cout << "---------------------------\n";
+        cout << "  BUDGET: $" << c.budget << "\n";
+        cout << "  ACTUAL: $" << c.actual << "\n";
 
-        // Print the status line with color applied
-        cout << "  Status: " << color;
+        // Print the status line
+        cout << "  STATUS: ";
         if (diff > 0)
-            cout << "OVER by $" << diff;
+            cout << "OVER  $" << diff;
         else if (diff < 0)
-            cout << "UNDER by $" << -diff;
+            cout << "UNDER $" << -diff;
         else 
-            cout << "Exactly on budget";
+            cout << "ON BUDGET";
 
         // Reset terminal color
         cout << "\033[0m\n";
     }
-    cout << endl;
 }
