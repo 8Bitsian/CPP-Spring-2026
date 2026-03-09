@@ -240,7 +240,7 @@ int mainMenu() {
 
 // ============================ SUB-MENUS ============================
 /* -------------------------------------------------------------------
-Displays the expenses menu options and routes the user to the correct
+Displays the sub-menu options and routes the user to the correct
 part of the program based on their input. Loops until the user exits.
 ------------------------------------------------------------------- */
 int expensesMenu() {
@@ -273,10 +273,6 @@ int expensesMenu() {
     }
 }
 
-/* -------------------------------------------------------------------
-Displays the utilities menu options and routes the user to the correct
-part of the program based on their input. Loops until the user exits.
-------------------------------------------------------------------- */
 int utilitiesMenu() {
     while (true) { // Iterate menu until the user returns or exits
         cout << "\n===== UTILITY EXPENSES MENU =====\n";
@@ -304,10 +300,6 @@ int utilitiesMenu() {
     }
 }
 
-/* -------------------------------------------------------------------
-Displays the meals menu options and routes the user to the correct
-part of the program based on their input. Loops until the user exits.
-------------------------------------------------------------------- */
 int mealsMenu() {
     while (true) { // Iterate menu until the user returns or exits
         cout << "\n===== FOOD EXPENSES MENU =====\n";
@@ -331,10 +323,6 @@ int mealsMenu() {
     }
 }
 
-/* -------------------------------------------------------------------
-Displays the operating menu options and routes the user to the correct
-part of the program based on their input. Loops until the user exits.
-------------------------------------------------------------------- */
 int operatingMenu() {
     while (true) { // Iterate menu until the user returns or exits
         cout << "\n===== OPERATING EXPENSES MENU =====\n";
