@@ -31,8 +31,6 @@ Category categories[] = {
 };
 
 // ==================== GLOBAL CONSTANTS & VARIABLES =====================
-// Sentinel value used to indicate the user wants to exit the program.
-const int EXIT_SENTINEL = -1;
 // Number of categories in the array (computed automatically).
 const int NUM_CATEGORIES = sizeof(categories) / sizeof(categories[0]);
 // Number of months included in the expense calculation.
@@ -50,9 +48,6 @@ void budgetComparisons();                         // Displays budget vs actual t
 void categoryReport();                            // Displays color-coded category report
 int mainMenu();                                   // Main menu loop
 int expensesMenu();                               // Expenses menu
-int utilitiesMenu();                              // Utilities submenu
-int operatingMenu();                              // Operating submenu
-int mealsMenu();                                  // Food submenu
 
 // =========================== INPUT VALIDATION ==========================
 /* -------------------------------------------------------------------
@@ -114,12 +109,8 @@ char getMenuChar(const string& prompt) {
     while (c == '\n')   // Skip newline characters
         c = cin.get();  // Read next character
 
-    if (c == '-') {                 // Check if user typed '-'
-        if (cin.peek() == '1') {    // Peek next character without consuming it
-            cin.get();              // Consume the '1'
-            return 'X';             // Return sentinel 'X' for exit
-        }
-    }
+    if (c == 'x' || c == 'X')  // Check if user typed 'x' or 'X'
+        return 'X';            // Return sentinel 'X' for exit
 
     return toupper(c);  // Convert to uppercase
 }
@@ -173,8 +164,12 @@ void enterCost(Category& c) {
     // User input for budgeted and actual amounts
     c.budget = getPositiveDouble("\nEnter BUDGETED amount for " + c.name + ": $");
     double actual = getPositiveDouble("Enter ACTUAL amount for " + c.name + ": $");
-    // Calculate total cost for all months
-    c.actual = actual * totalMonths;
+    
+    // Maintenance and Renovation are full-span totals, not monthly
+    if (c.name == "Maintenance" || c.name == "Renovation")
+        c.actual = actual; // Use the value exactly as entered
+    else // Calculate total cost for all months
+        c.actual = actual * totalMonths;
 }
 
 // ======================== CALCULATE TOTALS =========================
@@ -220,7 +215,7 @@ int mainMenu() {
         cout << "2. Input Monthly Expenses\n";
         cout << "3. View Budget Comparisons\n";
         cout << "4. View Category Report\n";
-        cout << "(-1) Exit Program\n\n";
+        cout << "(X) Exit Program\n\n";
         
         // Get user input (Sentinal Values: -1 and 'M')
         char c = getMenuChar("Enter Option: ");
@@ -231,7 +226,7 @@ int mainMenu() {
             case '4': categoryReport(); break;
             case 'X': // -1 exit program
                 cout << "\nExiting program...";
-                return EXIT_SENTINEL;
+                exit(0); // Closes program immediately
         }
     }
 }
@@ -247,99 +242,36 @@ int expensesMenu() {
         cout << "\n===== MONTHLY EXPENSES MENU =====\n";
         cout << "1. Mortgage/Rent Cost\n";
         cout << "2. Home-Insurance Cost\n";
-        cout << "3. Utilities Expenses\n";
-        cout << "4. Operating Expenses\n";
-        cout << "5. Food Expenses\n";
+        cout << "3. Electricity Cost\n";
+        cout << "4. Internet Costs\n";
+        cout << "5. Water Cost\n";
+        cout << "6. Gas Cost\n";
+        cout << "7. Maintenance Cost\n"; // Includes repairs
+        cout << "8. Renovation Cost\n";
+        cout << "9. Groceries Cost\n";
+        cout << "0. Restaurant Cost\n";
         cout << "(M) Return to Main Menu\n";
-        cout << "(-1) Exit Program\n\n";
+        cout << "(X) Exit Program\n\n";
 
         // Get user input (Sentinal Values: -1 and 'M')
         char c = getMenuChar("Enter Option: ");
         switch (c) {
-            case '1': enterCost(categories[0]); break;  // Housing
-            case '2': enterCost(categories[1]); break;  // Insurance
-            case '3': utilitiesMenu(); break;
-            case '4': operatingMenu(); break;
-            case '5': mealsMenu(); break;
+            case '1': enterCost(categories[0]); break; // Housing
+            case '2': enterCost(categories[1]); break; // Insurance
+            case '3': enterCost(categories[2]); break; // Electricity
+            case '4': enterCost(categories[3]); break; // Internet
+            case '5': enterCost(categories[4]); break; // Water
+            case '6': enterCost(categories[5]); break; // Gas
+            case '7': enterCost(categories[8]); break; // Maintenance
+            case '8': enterCost(categories[9]); break; // Renovation
+            case '9': enterCost(categories[6]); break; // Groceries
+            case '0': enterCost(categories[7]); break; // Restaurant
             case 'M': // Return to Main Menu
                 cout << "\nReturning to Main Menu...\n";
                 return 0;
             case 'X': // -1 exit program
                 cout << "\nExiting program...\n";
-                return EXIT_SENTINEL;
-        }
-    }
-}
-
-int utilitiesMenu() {
-    while (true) { // Iterate menu until the user returns or exits
-        cout << "\n===== UTILITY EXPENSES MENU =====\n";
-        cout << "1. Electricity Cost\n";
-        cout << "2. Internet Costs\n";
-        cout << "3. Water Cost\n";
-        cout << "4. Gas Cost\n";
-        cout << "(M) Return to Expenses Menu\n";
-        cout << "(-1) Exit Program\n\n";
-        
-        // Get user input (Sentinal Values: -1 and 'M')
-        char c = getMenuChar("Enter Option: ");
-        switch (c) {
-            case '1': enterCost(categories[2]); break; // Electricity
-            case '2': enterCost(categories[3]); break; // Internet
-            case '3': enterCost(categories[4]); break; // Water
-            case '4': enterCost(categories[5]); break; // Gas
-            case 'M': // Return to Main Menu
-                cout << "\nReturning to Main Menu...\n";
-                return 0;
-            case 'X': // -1 exit program
-                cout << "\nExiting program...\n";
-                return EXIT_SENTINEL;
-        }
-    }
-}
-
-int mealsMenu() {
-    while (true) { // Iterate menu until the user returns or exits
-        cout << "\n===== FOOD EXPENSES MENU =====\n";
-        cout << "1. Groceries Cost\n";
-        cout << "2. Restaurant Cost\n";
-        cout << "(M) Return to Expenses Menu\n";
-        cout << "(-1) Exit Program\n\n";
-        
-        // Get user input (Sentinal Values: -1 and 'M')
-        char c = getMenuChar("Enter Option: ");
-        switch (c) {
-            case '1': enterCost(categories[6]); break; // Groceries
-            case '2': enterCost(categories[7]); break; // Restaurant
-            case 'M': // Return to Main Menu
-                cout << "\nReturning to Main Menu...\n";
-                return 0;
-            case 'X': // -1 exit program
-                cout << "\nExiting program...\n";
-                return EXIT_SENTINEL;
-        }
-    }
-}
-
-int operatingMenu() {
-    while (true) { // Iterate menu until the user returns or exits
-        cout << "\n===== OPERATING EXPENSES MENU =====\n";
-        cout << "1. Maintenance Cost\n"; // Includes repairs
-        cout << "2. Renovation Cost\n";
-        cout << "(M) Return to Expenses Menu\n";
-        cout << "(-1) Exit Program\n\n";
-        
-        // Get user input (Sentinal Values: -1 and 'M')
-        char c = getMenuChar("Enter Option: ");
-        switch (c) {
-            case '1': enterCost(categories[8]); break; // Maintenance
-            case '2': enterCost(categories[9]); break; // Renovation
-            case 'M': // Return to Main Menu
-                cout << "\nReturning to Main Menu...\n";
-                return 0;
-            case 'X': // -1 exit program
-                cout << "\nExiting program...\n";
-                return EXIT_SENTINEL;
+                exit(0); // Closes program immediately
         }
     }
 }
@@ -389,8 +321,5 @@ void categoryReport() {
             cout << "UNDER $" << -diff;
         else 
             cout << "ON BUDGET";
-
-        // Reset terminal color
-        cout << "\033[0m\n";
     }
 }
