@@ -89,28 +89,32 @@ void categoryReport();
 void clearCost(Category& c) { c.budget = 0; c.actual = 0; }
 
 // showBreadcrumb() : Displays a breadcrumb trail to show the user's current location
-void showBreadcrumb(const string& location) { cout << "[You are here: " << location << "]\n\n"; }
+void showBreadcrumb(const string& location) { cout << "\n[You are here: " << location << "]\n"; }
 
 // showWarnings() : Displays warnings for categories that have missing budget or actual values
 void showWarnings() {
-    // 1: Loop through all categories
-    for (int i = 0; i < NUM_CATEGORIES; i++) {
+    // 1. Loop through all categories
+    int sum = 0;
+    for (int i = 0; i < NUM_CATEGORIES; i++)
         // 1.1: Validate if the category has missing budget or actual values
-        if (categories[i].budget == 0 || categories[i].actual == 0) {
-            // 1.2: Display a warning message for this category
-            cout << "WARNING: " << categories[i].upper
-                 << " has missing budget or actual values.\n";
-        }
+        if (categories[i].budget == 0 || categories[i].actual == 0)
+            // 1.2: Calculate total categories w/missing values
+            sum++;
+    
+    // 2. Display the result once
+    if (sum > 0) {
+        // 2.1: Display a warning message for this category
+        cout << "WARNING: " << sum
+             << " categor" << (sum == 1 ? "y has" : "ies have")
+             << " missing values...\n\n";
     }
-
-    // 2: Print a blank line for spacing
-    cout << "\n";
 }
 
 // showCategoryStatus() : Displays the status of each category (OK or N/A)
 void showCategoryStatus() {
     // 1: Print a header for the status table.
-    cout << "Category Status:\n";
+    cout << "\n---- Category Status -----\n";
+    showWarnings();
 
     // 2: Loop through all categories
     for (int i = 0; i < NUM_CATEGORIES; i++) {
@@ -118,17 +122,15 @@ void showCategoryStatus() {
         cout << categories[i].upper << ": ";
         // 2.2: Show whether the budget value has been entered
         if (categories[i].budget > 0)
-            cout << "Budget OK, ";
+            cout << "Budget OK  | ";
         else
-            cout << "Budget N/A, ";
+            cout << "Budget N/A | ";
         // 2.3: Show whether the actual value has been entered
         if (categories[i].actual > 0)
             cout << "Actual OK\n";
         else
             cout << "Actual N/A\n";
     }
-    // 3: Print a blank line for spacing.
-    cout << "\n";
 }
 
 
@@ -143,7 +145,7 @@ void getMonthRange() {
 
     // 3. Get user input
     int startMonth = getValidMonth("Start Month (1-12): ");
-    int endMonth   = getValidMonth("End Month (1-12): ");
+    int endMonth   = getValidMonth("  End Month (1-12): ");
 
     // 4. Compute the number of months, ensuring it is at least 1.
     totalMonths = max(1, endMonth - startMonth + 1);
@@ -240,17 +242,16 @@ void enterCategoryCosts(Category& c) {
     while (!getCostInput("Enter BUDGETED amount: $", budgetValue, c));
     while (!getCostInput("Enter ACTUAL amount: $", actualValue, c));
 
-    // 6. Show warnings based on the actual value
-    showWarnings(actualValue);
-
-    // 7. Store the budgeted amount and the actual amount, scaling by months in necessary
+    // 6. Store the budgeted amount and the actual amount, scaling by months in necessary
     c.budget = budgetValue;
     c.actual = c.multiplyByMonths ? actualValue * totalMonths : actualValue;
 
-    // 8. Confirm to the user that the values were saved and show progress
+    // 7. Confirm to the user that the values were saved and show progress
     cout << "\nSaved successfully.\n";
-    showProgressAndMissingCategories();
+    showCategoryStatus();
 }
+
+// ============================= CALCULATE TOTALS ==============================
 
 // totalExpenses() : Adds up all actual expenses across all categories.
 double totalExpenses() {
@@ -274,37 +275,24 @@ double totalBudget() {
     return total;
 }
 
-/*
-   budgetComparisons()
-   Shows the total budget, total expenses, and whether the user
-   is over, under, or exactly on budget.
-*/
-void budgetComparisons() {
-    // Clear the screen for a clean display.
-    clearScreen();
+// ============================= OUTPUT REPORTS ==============================
 
-    // Show a breadcrumb so the user knows where they are.
+// budgetComparisons() : Shows the total budget, expenses, and if user is over, under, or on budget
+void budgetComparisons() {
+    // 1. Show a breadcrumb so the user knows where they are
     showBreadcrumb("Budget Comparisons");
 
-    // Compute the total actual expenses across all categories.
+    // 2. Compute the total actual and budgeted expenses across all categories
     double actual = totalExpenses();
-
-    // Compute the total budgeted amount across all categories.
     double budget = totalBudget();
 
-    // Format all numbers to two decimal places.
+    // 3. Format all numbers to two decimal places.
     cout << fixed << setprecision(2);
 
-    // Display the report header.
+    // 4. Display the report
     cout << "\n===== BUDGET COMPARISON =====\n";
-
-    // Show the total budgeted amount.
     cout << "Budget:   $" << budget << "\n";
-
-    // Show the total actual expenses.
     cout << "Expenses: $" << actual << "\n";
-
-    // Compare actual spending to the budget and display the result.
     if (actual > budget)
         cout << "You are OVER by $" << actual - budget << "\n";
     else if (actual < budget)
@@ -313,118 +301,96 @@ void budgetComparisons() {
         cout << "You are EXACTLY on budget.\n";
 }
 
-/*
-   categoryReport()
-   Shows a detailed breakdown for each category, including
-   budget, actual, difference, and full-span status.
-*/
+// categoryReport() : Show a breakdown for each category w/budget, actual, different and full-span status
 void categoryReport() {
-    // Clear the screen for a clean display.
-    clearScreen();
-
-    // Show a breadcrumb so the user knows where they are.
+    // 1. Show a breadcrumb so the user knows where they are
     showBreadcrumb("Category Report");
 
-    // Display the report header.
-    cout << "\n===== CATEGORY REPORT =====\n";
-
-    // Format all numbers to two decimal places.
+    // 2. Format all numbers to two decimal places
     cout << fixed << setprecision(2);
 
-    // Loop through each category and display its details.
+    // 3. Display the report header
+    cout << "\n===== CATEGORY REPORT =====\n";
     for (auto& c : categories) {
-        // Compute the difference between actual and budget.
+        // 3.1 Compute the difference between actual and budget.
         double diff = c.actual - c.budget;
 
-        // Display the category name.
+        // 3.2 Display the category details
         cout << "\n" << c.upper << "\n";
-
-        // Display a simple separator line.
         cout << "---------------------------\n";
-
-        // Show the budgeted amount.
         cout << "Budget: $" << c.budget << "\n";
-
-        // Show the actual amount spent.
         cout << "Actual: $" << c.actual << "\n";
-
-        // Indicate if this category is a full-span total.
-        if (c.categoryType == FULL_SPAN)
+        
+        // 3.3 Indicate if category is full-span or output monthly bill
+        if (c.categoryType == FULL_SPAN) {
+            // Full-span categories are one-time totals
             cout << "(Full-span total)\n";
-
-        // Display the status (over, under, or on budget).
+        } else {
+            // Correct monthly calculation based on user-selected range
+            double monthly = (totalMonths > 0 ? c.actual / totalMonths : 0);
+            cout << "Monthly: $" << monthly << "\n";
+        }
+        
+        // 3.4 Display the status (over, under, or on budget)
         cout << "Status: ";
         if (diff > 0)
-            cout << "OVER by $" << diff;
+            cout << "OVER by $" << diff << "\n";
         else if (diff < 0)
-            cout << "UNDER by $" << -diff;
+            cout << "UNDER by $" << -diff << "\n";
         else
-            cout << "ON BUDGET";
-
-        // Move to the next line for spacing.
-        cout << "\n";
+            cout << "ON BUDGET\n";
     }
 }
 
-/*
-   expensesMenu()
-   Displays the list of categories, handles user selection,
-   and routes the user to enterCategoryCosts().
-*/
+// ============================= MENUS ==============================
+
+// expensesMenu() : Display the monthly expenses menu
 int expensesMenu() {
-    // Loop so the menu reappears after each action.
+    // 1. Loop so the menu reappears after each action
     while (true) {
-        // Clear the screen for a clean display.
-        clearScreen();
-
-        // Show a breadcrumb so the user knows where they are.
+        // 1.1 Show a breadcrumb so the user knows where they are
         showBreadcrumb("Monthly Expenses");
-
-        // Display the menu header.
+        // 1.2 Display the menu
         cout << "\n===== EXPENSES MENU =====\n";
-
-        // List all categories with their menu numbers.
+        // List all categories with their menu numbers
         for (auto& c : categories)
             cout << c.menuNumber << ". " << c.name << "\n";
-
         // Provide options to return to main menu or exit.
         cout << "[M] Main Menu\n";
         cout << "[X] Exit\n\n";
 
-        // Ask the user for a menu choice.
-        char choice = getMenuChoice("Choose: ");
+        // 1.3 Get user input
+        char choice;
+        cout << "Enter your choice: ";
+        cin >> choice;
+        choice = toupper(choice);
 
-        // Return to the main menu.
+        // 1.4 Validate if sentinel value is 'M' or 'X'
         if (choice == 'M') return 0;
-
-        // Exit the program immediately.
         if (choice == 'X') exit(0);
-
-        // If the user typed a digit, check if it matches a category.
+      
+        // 1.5 If the user typed a digit, validate if it matches a category
         if (isdigit(choice)) {
             // Convert the character digit to an integer.
             int num = choice - '0';
-
             // Find the category with the matching menu number.
             for (auto& c : categories)
                 if (c.menuNumber == num)
-                    enterCategoryCosts(c);  // Open cost entry for that category.
+                    // Open cost entry for that category.
+                    enterCategoryCosts(c);
         }
     }
 }
 
-/*
-   mainMenu()
-   Displays the main navigation menu and calls the appropriate actions.
-*/
+// mainMenu() : Displays the main navigation menu
 int mainMenu() {
-    // Define a small struct to pair menu labels with their actions.
+    // 1. Define a small struct to pair menu labels with their actions.
     struct MenuItem {
         string label;
         void (*action)();
     };
 
-    // Create the list of main menu options and their corresponding functions.
+    // 2. Create the list of main menu options and their corresponding functions.
     MenuItem items[] = {
         {"Redefine Month Range", getMonthRange},
         {"Input Monthly Expenses", [](){ expensesMenu(); }},
@@ -432,55 +398,46 @@ int mainMenu() {
         {"View Category Report", categoryReport}
     };
 
-    // Compute how many menu items exist.
+    // 3. Compute how many menu items exist.
     const int COUNT = sizeof(items) / sizeof(items[0]);
 
-    // Loop so the main menu reappears after each action.
+    // 4. Loop so the main menu reappears after each action
     while (true) {
-        // Clear the screen for a clean display.
-        clearScreen();
-
-        // Show a breadcrumb so the user knows where they are.
+        // 4.1 Show a breadcrumb so the user knows where they are
         showBreadcrumb("Main Menu");
 
-        // Display the menu header.
+        // 4.2 Display the menu header
         cout << "\n===== MAIN MENU =====\n";
-
-        // List each menu item with a number.
+        // List each menu item with a number
         for (int i = 0; i < COUNT; i++)
             cout << i+1 << ". " << items[i].label << "\n";
-
-        // Provide an option to exit the program.
+        // Provide an option to exit the program
         cout << "[X] Exit\n\n";
 
-        // Ask the user for a menu choice.
-        char choice = getMenuChoice("Choose: ");
-
-        // Exit the program immediately.
-        if (choice == 'X')
-            exit(0);
-
-        // If the user typed a digit, check if it matches a menu item.
+        // 4.3 Get user input
+        char choice;
+        cout << "Enter your choice: ";
+        cin >> choice;
+        choice = toupper(choice);
+      
+        // 4.4 Validate if sentinel value is 'X'
+        if (choice == 'X') exit(0);
+      
+        // 4.5 If the user typed a digit, check if it matches a menu item
         if (isdigit(choice)) {
-            // Convert the character digit to a zero‑based index.
+            // Convert the character digit to a zero‑based index
             int index = choice - '1';
-
-            // Ensure the index is valid before calling the action.
+            // Ensure the index is valid before calling the action
             if (index >= 0 && index < COUNT)
                 items[index].action();
         }
     }
 }
 
-/*
-   main()
-   Starts the program by asking for the month range,
-   then opens the main menu.
-*/
+// Program execution starts here
 int main() {
-    // Ask the user to define the month range first.
+    // 1. Ask the user to define the month range first.
     getMonthRange();
-
-    // Open the main menu loop.
+    // 2. Open the main menu loop.
     mainMenu();
 }
