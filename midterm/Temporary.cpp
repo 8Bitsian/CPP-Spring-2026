@@ -133,7 +133,6 @@ void showCategoryStatus() {
     }
 }
 
-
 // ============================= USER INPUT ==============================
 // getMonthRange() : Handles input for the month range and displays the result
 void getMonthRange() {
@@ -252,7 +251,6 @@ void enterCategoryCosts(Category& c) {
 }
 
 // ============================= CALCULATE TOTALS ==============================
-
 // totalExpenses() : Adds up all actual expenses across all categories.
 double totalExpenses() {
     // 1. Calculate each categories actual amount
@@ -276,7 +274,6 @@ double totalBudget() {
 }
 
 // ============================= OUTPUT REPORTS ==============================
-
 // budgetComparisons() : Shows the total budget, expenses, and if user is over, under, or on budget
 void budgetComparisons() {
     // 1. Show a breadcrumb so the user knows where they are
@@ -343,7 +340,6 @@ void categoryReport() {
 }
 
 // ============================= MENUS ==============================
-
 // expensesMenu() : Display the monthly expenses menu
 int expensesMenu() {
     // 1. Loop so the menu reappears after each action
@@ -434,6 +430,7 @@ int mainMenu() {
     }
 }
 
+// ============================= MAIN METHOD ==============================
 // Program execution starts here
 int main() {
     // 1. Ask the user to define the month range first.
