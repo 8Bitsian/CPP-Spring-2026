@@ -84,7 +84,6 @@ void budgetComparisons();
 void categoryReport();
 
 // =========================== HELPER FUNCTIONS ===========================
-
 // clearCost() : Resets both the budget and actual values for a category
 void clearCost(Category& c) { c.budget = 0; c.actual = 0; }
 
@@ -153,10 +152,7 @@ void getMonthRange() {
     cout << "\nUsing " << totalMonths << " month(s).\n";
 }
 
-/*
-   getValidMonth()
-   Prompts the user for a month number (1–12) and validates it.
-*/
+// getValidMonth() : Prompts the user for a month number (1–12) and validates it
 int getValidMonth(const string& prompt) {
     // 1: Declare variable
     int month;
@@ -180,7 +176,7 @@ int getValidMonth(const string& prompt) {
     }
 }
 
-// getMenuChoice() : Prompts the user for a menu choice and validates the input
+// getMenuChoice() : Prompts the user for a menu choice (1-10) and validates the input
 int getMenuChoice(int min, int max) {
     // 1: Declare variable
     int choice;
