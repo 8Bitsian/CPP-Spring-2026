@@ -1,0 +1,53 @@
+Chapter 10: Characters, C-String, and More About the string Class
+
+NOTES: Programming is about simulating reality.
+       Before C++, strings were treated as an array of chars, and to terminate the string we had to add the null terminator (\0)
+          - char str[12] = [H][e][l][l][o][][W][o][r][l][d][!]'\0'
+       Now, because of object-oriented programming, a string (which is a user-defined data type) is a class of a set of characters and C++ automatically adds the null terminator
+          - string str = "Hello, world!\n";
+       Because there is alot of software written using procedural programming (ex. C, COLBOL, FORTRAN) it's important to know this.
+
+Character Testing
+CONCEPT: The C++ library provides several functions for testing characters. To use these functiosn you must include the <cctype> header file
+
+Character Case conversion
+CONCEPT: The C++ library offers functions for converting a character to uppercase or lowercase
+
+C-Strings
+CONCEPT: In C++, a C-string is a sequence of characters stored in consecurtive memory locations, terminated by a null character
+
+Library Functions for Working w/C-Strings
+CONCEPT: The C++ library has numerous functions for handling C-strings. These functions perform various tests and manipulations, and require the <cstring> header file be included.
+
+String/Numeric Conversion Functions
+CONCEPT: The C++ library provides functions for converting C-strings and string objects to numeric data types and vice versa
+
+Focus: Writing Your Own C-String-Handling Functions
+CONCEPT: You can design your own specialized functions for manipulating strings
+
+More About the C++ string Class
+CONCEPT: Standard C++ provides a special data type for storing and working with strings
+
+Focus: A Case Study
+As a programmer for the Home Software Company, you are asked to develop a function named dollarFormat()
+that inserts commands and a dollar ($) sign at the appropriate locations in a string object contianing an unformatted dollar amount.
+As an argument, the function should accept a reference to a string object.
+You may assume the string object contains a value such as 1084567.89.
+The function should modify the string object so it scontains a formatted dollar amount, such as $1,084,567.89.
+
+The code for the dollarFormat() function is as follows:
+  void dollarFormat(string cy) {
+    itn dp;
+    dp = currency.find('.');  // Find decimal point (.)
+    if (dp > 3) {             // Insert commas (,)
+      for (int x = dp - 3; x > 0; x -= 3)
+        currency.insert(x, ",");
+    }
+    currency.insert(0, "$");  // Insert dollar sign ($)
+  }
+
+The function defines an int variable named dp. Thsi variable is used to hold the position of the unformatted number's decimal point.
+This is accomplished with the statement: dp = currency.find('.');
+
+The strign class's find() member function returns the position number in the string where the '.' character is found.
+An if statement determines if the number has more than three numbers preceding the decimal point: if (dp > 3)
