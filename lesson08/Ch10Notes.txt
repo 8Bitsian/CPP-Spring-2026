@@ -23,6 +23,8 @@ NOTES: Programming is about simulating reality.
        You can initialize a string with characters via a constructor.
        EX. std::string str ("Test string");
 
+       When studying characters, be sure to look over the ASCII table.
+
 === CHARACTER TESTING ===
 CONCEPT: The C++ library provides several functions for testing characters. To use these functiosn you must include the <cctype> header file
 
