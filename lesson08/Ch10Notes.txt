@@ -13,13 +13,17 @@ NOTES: Programming is about simulating reality.
        The string class has a set of functions that work with it.
 
        We include libraries so we can use the functions defiend inside of the library, otherwise they will not be available.
-       To use the c-strings use the following: #include <cstring>.
+       To use strings use the following: #include <string>
+       To use the c-strings use the following: #include <cstring>
 
        Scope resolution operator (::) is read from right to left.
        EX. std::string string is connected to the standard library
-       to avoid using std, using the 
+       To avoid using std everywhere in the code, using the using namespace std;
 
-=== CHARCTER TESTING ===
+       You can initialize a string with characters via a constructor.
+       EX. std::string str ("Test string");
+
+=== CHARACTER TESTING ===
 CONCEPT: The C++ library provides several functions for testing characters. To use these functiosn you must include the <cctype> header file
 
 The C++ library provides several functions that allow you to test the value of a chaacter.
@@ -38,14 +42,13 @@ EX. The following program segment uses the isupper() function to determine wheth
     The if statement will cause the message "Letter is lowercase." to be displayed.
 
 The following are several character-testing functions. Each of these is prototypes in the <cctype> header file:
-- isalpha: Returns true (a nonzero number) if the argument is a letter of the alphabet. Returns false (0) if the argument is not a letter.
-- isalnum: Returns true (a nonzero number) if the argument is a letter of the alphabet or a digit. Otherwise returns false (0).
-- isdigit: Returns true (a nonzero number) if the argument is a letter of the alphabet. Returns false (0) if the argument is not a letter.
-- islower: Returns true (a nonzero number) if the argument is a letter of the alphabet. Returns false (0) if the argument is not a letter.
+- isalpha: Returns true (a nonzero number) if the argument is a letter of the alphabet. Returns false (0) if the argument is not a letter
+- isalnum: Returns true (a nonzero number) if the argument is a letter of the alphabet or a digit. Otherwise returns false (0)
+- isdigit: Returns true (a nonzero number) if the argument is a digit between 0 and 9. Otherwise returns false (0)
+- islower: Returns true (a nonzero number) if the argument is a lowercase letter. Otherwise returns false (0)
 - isprint: Returns true (a nonzero number) if the argument is a letter of the alphabet. Returns false (0) if the argument is not a letter.
 - ispunct: Returns true (a nonzero number) if the argument is a letter of the alphabet. Returns false (0) if the argument is not a letter.
-- isupper: Returns true (a nonzero number) if the argument is a letter of the alphabet. Returns false (0) if the argument is not a letter.
-
+- isupper: Returns true (a nonzero number) if the argument is an uppercase letter. Returns false (0) if the argument is not a letter.
 
 Character Case conversion
 CONCEPT: The C++ library offers functions for converting a character to uppercase or lowercase
