@@ -1,5 +1,5 @@
 Chapter 10: Characters, C-String, and More About the string Class
-
+=== NOTES ===
 NOTES: Programming is about simulating reality.
        Before C++, strings were treated as an array of chars, and to terminate the string we had to add the null terminator (\0)
           - char str[12] = [H][e][l][l][o][][W][o][r][l][d][!]'\0'
@@ -7,8 +7,45 @@ NOTES: Programming is about simulating reality.
           - string str = "Hello, world!\n";
        Because there is alot of software written using procedural programming (ex. C, COLBOL, FORTRAN) it's important to know this.
 
-Character Testing
+       We aim to work with objects. Strings are objects that represent sequences of characters.
+       The stantd string class provides support for such object with an interface similar to that of a standard container.
+
+       The string class has a set of functions that work with it.
+
+       We include libraries so we can use the functions defiend inside of the library, otherwise they will not be available.
+       To use the c-strings use the following: #include <cstring>.
+
+       Scope resolution operator (::) is read from right to left.
+       EX. std::string string is connected to the standard library
+       to avoid using std, using the 
+
+=== CHARCTER TESTING ===
 CONCEPT: The C++ library provides several functions for testing characters. To use these functiosn you must include the <cctype> header file
+
+The C++ library provides several functions that allow you to test the value of a chaacter.
+These functions test a single char argument and return either true or false.
+
+EX. The following program segment uses the isupper() function to determine whether the character passed as an argument is an uppercase letter.
+    If it is, then the function returns true. Otherwise, it returns false.
+
+    char letter = 'a';
+    if (isupper(letter))
+       cout << "Letter is lowercase.\n";
+    else
+       cout << "Letter is uppercase.\n";
+
+    Because the variable letter, in this example, contains a lowercase letter, isupper() returns false.
+    The if statement will cause the message "Letter is lowercase." to be displayed.
+
+The following are several character-testing functions. Each of these is prototypes in the <cctype> header file:
+- isalpha: Returns true (a nonzero number) if the argument is a letter of the alphabet. Returns false (0) if the argument is not a letter.
+- isalnum: Returns true (a nonzero number) if the argument is a letter of the alphabet or a digit. Otherwise returns false (0).
+- isdigit: Returns true (a nonzero number) if the argument is a letter of the alphabet. Returns false (0) if the argument is not a letter.
+- islower: Returns true (a nonzero number) if the argument is a letter of the alphabet. Returns false (0) if the argument is not a letter.
+- isprint: Returns true (a nonzero number) if the argument is a letter of the alphabet. Returns false (0) if the argument is not a letter.
+- ispunct: Returns true (a nonzero number) if the argument is a letter of the alphabet. Returns false (0) if the argument is not a letter.
+- isupper: Returns true (a nonzero number) if the argument is a letter of the alphabet. Returns false (0) if the argument is not a letter.
+
 
 Character Case conversion
 CONCEPT: The C++ library offers functions for converting a character to uppercase or lowercase
@@ -51,3 +88,5 @@ This is accomplished with the statement: dp = currency.find('.');
 
 The strign class's find() member function returns the position number in the string where the '.' character is found.
 An if statement determines if the number has more than three numbers preceding the decimal point: if (dp > 3)
+
+If the decimal point is at a position greater than 3, then the function inserts commas in the 
