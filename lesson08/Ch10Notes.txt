@@ -50,13 +50,13 @@ The following are several character-testing functions. Each of these is prototyp
 - ispunct: Returns true (a nonzero number) if the argument is a letter of the alphabet. Returns false (0) if the argument is not a letter.
 - isupper: Returns true (a nonzero number) if the argument is an uppercase letter. Returns false (0) if the argument is not a letter.
 
-Character Case conversion
+=== CHARACTER CASE CONVERSION ===
 CONCEPT: The C++ library offers functions for converting a character to uppercase or lowercase
 
-C-Strings
+=== C-STRINGS ===
 CONCEPT: In C++, a C-string is a sequence of characters stored in consecurtive memory locations, terminated by a null character
 
-Library Functions for Working w/C-Strings
+=== Library Functions for Working w/C-Strings
 CONCEPT: The C++ library has numerous functions for handling C-strings. These functions perform various tests and manipulations, and require the <cstring> header file be included.
 
 String/Numeric Conversion Functions
