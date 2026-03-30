@@ -16,6 +16,8 @@ part of the language, as shown below:
 
 EX. bool, char, int, float, double
 
+The additional long keyword increases the range and the unsigned keyword makes everything positive.
+
 A data type defines what values a variable may hold. Each type listed above has its own
 range of values. Data types also define what values a variable may not hold. In addition,
 data types also define the operations that may be performed on a value. The previously
@@ -37,7 +39,14 @@ own data structures, or ADTs.
 CONCEPT: C++ allows you to group several variables together into a single item known as structure.
 ===========================
 11.3 ACCESSING STRUCTURE MEMBERS
-CONCEPT: 
+CONCEPT: The dot operator (.) allows you to access structure members in a program.
+
+C++ provides the dot operator (.) to access the individual memebers of a structure.
+
+EX. deptHead.empNumber = 475;
+
+In this starement, the number 475 is assigned to the empNumber member of deptHead. The dot operator
+connects the name of the member variable with the name of the structure variable it belongs to
 ===========================
 11.4 INITIALIZING A STRUCTURE
 CONCEPT: 
