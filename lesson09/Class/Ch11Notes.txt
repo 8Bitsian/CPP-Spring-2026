@@ -1,0 +1,30 @@
+Chapter 11: Structured Data
+Imani Hollie 03/30/2026
+===========================
+Data types are 
+
+===========================
+CONCEPT: Abstract Data Types (ADTs) are data types created by the programmer.
+ADTs have their own range (or domain)of data and their own sets of operations
+that may be performed on them.
+
+The term abstract data type (ADT) is significant in object-oriented programming (OOP).
+
+An abstraction is a general model of something. It is a definition that includes only
+the general characteristics of an object.
+
+C++ has several primitive data types (PDT), or data types that are defined as a basic
+part of the language, as shown below:
+
+EX. bool, char, int, float, double
+
+A data type defines what values a variable may hold. Each type listed above has its own
+range of values. Data types also define what values a variable may not hold. In addition,
+data types also define the operations that may be performed on a value. The previously
+mentioned PDTs allow the following mathemetical and relational operations to be used on them:
+
+EX. +, -, *, /, >, <, >=, <=, ==, !=
+
+Only integer data types, however, with the modulus operator (%).
+
+The PDT are abstract 
