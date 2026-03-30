@@ -20,6 +20,9 @@ fucntion2();
 
 int main() {
   Node x;
+  x.function1() = "Leo";
+  x->next =
+  
   cout << "Hello World!";
   return 0;
 }
