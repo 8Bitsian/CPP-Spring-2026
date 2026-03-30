@@ -10,7 +10,7 @@ struct Node {
 int main() {
   Node node;
   
-  for (int i = 0; i < SIZE - 1; i++)
+  for (int i = 0; i < SIZE; i++)
     node.n[i] = 'A' + i;
   
   cout << "node.n contains: " << node.n << endl;
