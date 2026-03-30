@@ -15,6 +15,9 @@ fucntion2();
 ...
 */
 
+// C++ 2 - ABSTRACT CLASS
+// DATA + FUNCTION IN A PACKAGE CALLED A CLASS
+
 int main() {
   Node x;
   cout << "Hello World!";
