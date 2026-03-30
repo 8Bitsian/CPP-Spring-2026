@@ -27,4 +27,7 @@ EX. +, -, *, /, >, <, >=, <=, ==, !=
 
 Only integer data types, however, with the modulus operator (%).
 
-The PDT are abstract 
+An abstract data type (ADT) is a data type created by the programmer and is composed of one
+or more primitive data types. The programmer decides what values are acceptable for the data
+type, as well as what operations may be performed on the data type. In many cases, the
+programmer deisgns their own specialized operations.
