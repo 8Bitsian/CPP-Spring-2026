@@ -1,9 +1,6 @@
 Chapter 11: Structured Data
 Imani Hollie 03/30/2026
 ===========================
-Data types are 
-
-===========================
 CONCEPT: Abstract Data Types (ADTs) are data types created by the programmer.
 ADTs have their own range (or domain)of data and their own sets of operations
 that may be performed on them.
@@ -31,3 +28,20 @@ An abstract data type (ADT) is a data type created by the programmer and is comp
 or more primitive data types. The programmer decides what values are acceptable for the data
 type, as well as what operations may be performed on the data type. In many cases, the
 programmer deisgns their own specialized operations.
+
+In these notes you will learn how to combine variables of primitive data types to form your
+own data structures, or ADTs.
+===========================
+CONCEPT: 
+===========================
+CONCEPT: 
+===========================
+CONCEPT: 
+===========================
+CONCEPT: 
+===========================
+CONCEPT: 
+===========================
+CONCEPT: 
+===========================
+CONCEPT: 
