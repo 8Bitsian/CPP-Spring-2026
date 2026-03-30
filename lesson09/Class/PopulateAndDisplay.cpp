@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+const int SIZE = 10;
+
+struct Node {
+  char n[SIZE];
+};
+
+int main() {
+  Node node;
+  
+  for (int i = 0; i < SIZE - 1; i++)
+    node.n[i] = 'A' + i;
+  
+  cout << "node.n contains: " << node.n << endl;
+
+  return 0;
+}
