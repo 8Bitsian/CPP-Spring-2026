@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-const int SIZE = 11;
+const int SIZE = 10;
 
 struct Node {
   char n[SIZE];
