@@ -1,6 +1,7 @@
 Chapter 11: Structured Data
 Imani Hollie 03/30/2026
 ===========================
+11.1 ABSTRACT DATA TYPES
 CONCEPT: Abstract Data Types (ADTs) are data types created by the programmer.
 ADTs have their own range (or domain)of data and their own sets of operations
 that may be performed on them.
@@ -32,16 +33,51 @@ programmer deisgns their own specialized operations.
 In these notes you will learn how to combine variables of primitive data types to form your
 own data structures, or ADTs.
 ===========================
+11.2 STRUCTURES
+CONCEPT: C++ allows you to group several variables together into a single item known as structure.
+===========================
+11.3 ACCESSING STRUCTURE MEMBERS
 CONCEPT: 
 ===========================
+11.4 INITIALIZING A STRUCTURE
 CONCEPT: 
 ===========================
+11.5 ARRAYS OF STRUCTURES
 CONCEPT: 
 ===========================
+11.6 NESTED STRUCTURES
 CONCEPT: 
 ===========================
+11.7 STRUCTURES AS FUNCTION ARGUMENTS
 CONCEPT: 
 ===========================
+11.8 RETURNING A STRUCTURE FROM A FUNCTION
 CONCEPT: 
 ===========================
+11.9 USING STRUCTURE BINDING DECLARATIONS W/STRUCTURES
 CONCEPT: 
+===========================
+11.10 POINTERS TO STRUCTURES
+CONCEPT: 
+===========================
+11.11 WHEN TO USE ., ->, AND *
+CONCEPT: 
+===========================
+11.12 ENUMERATED DATA TYPES
+CONCEPT: An enumerated data type is a programmer-defiend data type. It consists of values known
+as enumerators, which represent integer constants.
+
+Using the enum key word, you can create your own data type and specific the values that belong to that type.
+
+EX. enum Day { MONDAY, TUESDAY, WEDNESDAY, THRUSDAY, FRIDAY, SATURDAY, SUNDAY };
+
+An enumerated type declaration begins with the key word enum, followed by the name of the type,
+followed by a list of identifiers inside braces, and is terminated with a semicolon (;).
+Here is the general format of an enumerated type declaration:
+
+EX. enum TypeName { enumerators... };
+
+NOTE: The enumerators are not enclosed in quotation marks; Therefore, they are not strings.
+Enumerators must be legal C++ identifiers.
+
+Once you have created an enumerated data type in your program, you can define variables of that type.
