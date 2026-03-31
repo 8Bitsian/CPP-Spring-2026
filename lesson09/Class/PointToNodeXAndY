@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+const int SIZE = 10;
+
+struct Node {
+  int *x;
+};
+
+int main() {
+  Node node;
+  Node *pntToNode;
+  pntToNode = &node;
+  int y = 20;
+  pntToNode -> x = &y;
+  cout << *pntToNode -> x;
+  
+  return 0;
+}
