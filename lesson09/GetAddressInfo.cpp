@@ -39,27 +39,28 @@
   Imani Hollie 03/30/2026
 */
 
-#include <iostream>
-#include <cstring>      // for memset
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netdb.h>
+#include <iostream>     // Allows use of cout, cin, etc.
+#include <cstring>      // Provides memset() for zeroing structs
+#include <sys/types.h>  // Required for socket-related types
+#include <sys/socket.h> // Provides socket structures and constants
+#include <netdb.h>      // Provides networking definitions
 using namespace std;
 
-// The assignment uses "addrInfo" instead of "addrinfo"
-// so we must match that exact spelling.
+// The assignment uses a custom struct named "addrInfo"
+// This mimics the real "addrinfo" struct used by getaddrinfo().
 struct addrInfo {
-    int              ai_flags;
-    int              ai_family;
-    int              ai_socktype;
-    int              ai_protocol;
-    socklen_t        ai_addrlen;
-    struct sockaddr *ai_addr;
-    char            *ai_canonname;
-    struct addrInfo *ai_next;
+    int              ai_flags;      // Optional flags
+    int              ai_family;     // Address family (IPv4, IPv6, etc.)
+    int              ai_socktype;   // Socket type (TCP, UDP)
+    int              ai_protocol;   // Protocol (usually 0)
+    socklen_t        ai_addrlen;    // Length of socket address
+    struct sockaddr *ai_addr;       // Pointer to socket address
+    char            *ai_canonname;  // Canonical hostname
+    struct addrInfo *ai_next;       // Linked list pointer
 };
 
-// Provided function prototype
+// Function prototype for getAddrInfo()
+// Matches the assignment's required signature.
 int getAddrInfo (const char *restrict node,
                  const char *restrict service,
                  const struct addrInfo *restrict hints,
