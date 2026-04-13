@@ -1,7 +1,8 @@
 /*
   Imani Hollie 04/13/2026
-  Menu-Drivn Progam to Display ASII Values
-  Directions: Create a menu-driven program that allows the user to select between displaying uppercase letters, lowercase letters, or xiting the program
+  Menu-Drivn Progam to Display ASCII Values
+  Directions: Create a menu-driven program that allows the user to select between displaying uppercase letters,
+  lowercase letters, or exiting the program
   The program must be able to:
   - Display the vfollowing menu:
     - 1. Uppercase Letter (Call DisplayUppercaseASCII() to display uppercase letters (A-Z) with ASCII values
