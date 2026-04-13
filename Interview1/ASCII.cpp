@@ -19,8 +19,6 @@
 */
 
 #include <iostream>
-#include <string>
-#include <cctype>
 using namespace std;
 
 void DisplayUppercaseASCII();
@@ -31,25 +29,26 @@ int main() {
   // 1.1 Declare and initialize choice
   int choice = 0;
 
-  // 1.2 Display menu
-  cout << "\n===== ASCII MENU =====\n";
-  cout << "1. Uppercase Letters (A-Z)\n";
-  cout << "2. Lowercase Letters (a-z)\n";
-  cout << "3. Exit Program\n";
+  // 1.2 Loop until user chooses EXIT
+  while (choice != 3) {
+    // 1.3 Display menu
+    cout << "\n===== ASCII MENU =====\n";
+    cout << "1. Uppercase Letters (A-Z)\n";
+    cout << "2. Lowercase Letters (a-z)\n";
+    cout << "3. Exit Program\n";
 
-  // 1.3 Get user input
-  cout << "Enter Choice: ";
-  cin >> choice;
+    // 1.4 Get user input
+    cout << "\nEnter Choice: ";
+    cin >> choice;
 
-  // 1.4 Loop until user chooses EXIT
-  while (choice) {
-    switch choice {
+    switch (choice) {
       case 1: DisplayUppercaseASCII(); break;
-      case 2: DisplayLowercaseAACII(); break;
-      case 3: "Exiting program...\n"; break;
-      default: "ERROR: Invalid Input - Enter a digit (1-3)...\n";
+      case 2: DisplayLowercaseASCII(); break;
+      case 3: cout << "Exiting program...\n"; break;
+      default: cout << "ERROR: Invalid Input - Enter a digit (1-3)...\n";
     }
   }
+
   return 0;
 }
 
