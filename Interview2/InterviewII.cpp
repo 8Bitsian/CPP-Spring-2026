@@ -103,3 +103,48 @@ void mainMenu() {
 
     } while (choice != 6);
 }
+
+// ===== OTHER FUNCTIONS (UNCHANGED) =====
+
+// Replace a number at a given pointer
+void ReplaceNumbers(int* ptr) {
+    cout << "Enter new value: ";
+    *ptr = ReadValidatedInt();
+}
+
+// Return -1 for negative, 0 for zero, 1 for positive
+int CalcSignOfNums(int num) {
+    if (num > 0) return 1;
+    if (num < 0) return -1;
+    return 0;
+}
+
+// Return the highest of two numbers
+int CalcHighOfNums(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+// Display the sum of all numbers
+void DisplaySumOfNums(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    cout << "Total sum = " << sum << endl;
+}
+
+// Display the average of all numbers
+void DisplayAvgOfNums(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    cout << "Average = " << static_cast<double>(sum) / size << endl;
+}
+
+// ===== MAIN FUNCTION =====
+int main() {
+    LoadInitialNumbers();
+    mainMenu();
+    return 0;
+}
