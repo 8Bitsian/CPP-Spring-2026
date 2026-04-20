@@ -29,6 +29,7 @@ int ReadValidatedInt() {
 }
 
 // ===== FUNCTION DEFINITIONS =====
+
 // Reads initial values into the global array
 void LoadInitialNumbers() {
     cout << "Enter " << NUM_VALUES << " integers:\n";
@@ -48,3 +49,57 @@ void mainMenu() {
              << "2. Display Signs\n"
              << "3. Highest of Two Numbers\n"
              << "4. Display Total\n"
+             << "5. Display Average\n"
+             << "6. Exit\n"
+             << "Choose (1–6): ";
+
+        choice = ReadValidatedInt();
+        while (choice < 1 || choice > 6) {
+            cout << "Invalid. Enter 1–6: ";
+            choice = ReadValidatedInt();
+        }
+
+        switch (choice) {
+        case 1: {
+            cout << "Enter index (0–9): ";
+            int idx = ReadValidatedInt();
+            while (idx < 0 || idx >= NUM_VALUES) {
+                cout << "Invalid index. Enter 0–9: ";
+                idx = ReadValidatedInt();
+            }
+            ReplaceNumbers(&nums[idx]);
+            break;
+        }
+
+        case 2:
+            for (int i = 0; i < NUM_VALUES; i++) {
+                int s = CalcSignOfNums(nums[i]);
+                cout << "nums[" << i << "] = " << nums[i]
+                     << " → sign = " << s << endl;
+            }
+            break;
+
+        case 3: {
+            cout << "Enter first number: ";
+            int a = ReadValidatedInt();
+            cout << "Enter second number: ";
+            int b = ReadValidatedInt();
+            cout << "Highest = " << CalcHighOfNums(a, b) << endl;
+            break;
+        }
+
+        case 4:
+            DisplaySumOfNums(nums, NUM_VALUES);
+            break;
+
+        case 5:
+            DisplayAvgOfNums(nums, NUM_VALUES);
+            break;
+
+        case 6:
+            cout << "Exiting...\n";
+            break;
+        }
+
+    } while (choice != 6);
+}
