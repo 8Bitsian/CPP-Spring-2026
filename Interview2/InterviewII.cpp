@@ -4,147 +4,110 @@ using namespace std;
 
 const int NUM_VALUES = 10;
 
-// ===== GLOBAL ARRAY =====
-int nums[NUM_VALUES];
+int readInt() {
+    int x;
+    while (true) {
+        if (cin >> x) return x;
 
-// ===== FUNCTION PROTOTYPES =====
-int ReadValidatedInt();
-void LoadInitialNumbers();
-void mainMenu();
-void ReplaceNumbers(int* ptr);
-int CalcSignOfNums(int num);
-int CalcHighOfNums(int a, int b);
-void DisplaySumOfNums(int arr[], int size);
-void DisplayAvgOfNums(int arr[], int size);
+        if (cin.eof()) {
+            cout << "\nEnd of input detected. Exiting.\n";
+            exit(0);
+        }
 
-// ===== INPUT VALIDATION FUNCTION =====
-int ReadValidatedInt() {
-    int value;
-    while (!(cin >> value)) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "Invalid input. Enter an integer: ";
     }
-    return value;
 }
 
-// ===== FUNCTION DEFINITIONS =====
-
-// Reads initial values into the global array
-void LoadInitialNumbers() {
+void loadNumbers(int arr[]) {
     cout << "Enter " << NUM_VALUES << " integers:\n";
     for (int i = 0; i < NUM_VALUES; i++) {
         cout << "Value " << i + 1 << ": ";
-        nums[i] = ReadValidatedInt();
+        arr[i] = readInt();
     }
 }
 
-// Displays the menu and handles all user choices
-void mainMenu() {
-    int choice;
-
-    do {
-        cout << "\n===== MENU =====\n"
-             << "1. Replace Value\n"
-             << "2. Display Signs\n"
-             << "3. Highest of Two Numbers\n"
-             << "4. Display Total\n"
-             << "5. Display Average\n"
-             << "6. Exit\n"
-             << "Choose (1–6): ";
-
-        choice = ReadValidatedInt();
-        while (choice < 1 || choice > 6) {
-            cout << "Invalid. Enter 1–6: ";
-            choice = ReadValidatedInt();
-        }
-
-        switch (choice) {
-        case 1: {
-            cout << "Enter index (0–9): ";
-            int idx = ReadValidatedInt();
-            while (idx < 0 || idx >= NUM_VALUES) {
-                cout << "Invalid index. Enter 0–9: ";
-                idx = ReadValidatedInt();
-            }
-            ReplaceNumbers(&nums[idx]);
-            break;
-        }
-
-        case 2:
-            for (int i = 0; i < NUM_VALUES; i++) {
-                int s = CalcSignOfNums(nums[i]);
-                cout << "nums[" << i << "] = " << nums[i]
-                     << " → sign = " << s << endl;
-            }
-            break;
-
-        case 3: {
-            cout << "Enter first number: ";
-            int a = ReadValidatedInt();
-            cout << "Enter second number: ";
-            int b = ReadValidatedInt();
-            cout << "Highest = " << CalcHighOfNums(a, b) << endl;
-            break;
-        }
-
-        case 4:
-            DisplaySumOfNums(nums, NUM_VALUES);
-            break;
-
-        case 5:
-            DisplayAvgOfNums(nums, NUM_VALUES);
-            break;
-
-        case 6:
-            cout << "Exiting...\n";
-            break;
-        }
-
-    } while (choice != 6);
+int signOf(int n) {
+    return (n > 0) - (n < 0);
 }
 
-// ===== OTHER FUNCTIONS (UNCHANGED) =====
-
-// Replace a number at a given pointer
-void ReplaceNumbers(int* ptr) {
-    cout << "Enter new value: ";
-    *ptr = ReadValidatedInt();
-}
-
-// Return -1 for negative, 0 for zero, 1 for positive
-int CalcSignOfNums(int num) {
-    if (num > 0) return 1;
-    if (num < 0) return -1;
-    return 0;
-}
-
-// Return the highest of two numbers
-int CalcHighOfNums(int a, int b) {
+int maxOf(int a, int b) {
     return (a > b) ? a : b;
 }
 
-// Display the sum of all numbers
-void DisplaySumOfNums(int arr[], int size) {
+int sumOf(const int arr[]) {
     int sum = 0;
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < NUM_VALUES; i++)
         sum += arr[i];
-    }
-    cout << "Total sum = " << sum << endl;
+    return sum;
 }
 
-// Display the average of all numbers
-void DisplayAvgOfNums(int arr[], int size) {
-    int sum = 0;
-    for (int i = 0; i < size; i++) {
-        sum += arr[i];
+void menu(int arr[]) {
+    while (true) {
+        cout << "\n===== MENU =====\n"
+             << "1. Replace Value\n"
+             << "2. Display Signs of Values\n"
+             << "3. Highest of 2 Values\n"
+             << "4. Display Total of Array\n"
+             << "5. Display Average of Array\n"
+             << "6. Exit Program\n"
+             << "Choose (1-6): ";
+
+        int choice = readInt();
+        if (choice == 6) {
+            cout << "Exiting Program...\n";
+            break;
+        }
+
+        switch (choice) {
+            case 1: {
+                int idx;
+                do {
+                    cout << "\nEnter Index (0–9): ";
+                    idx = readInt();
+                } while (idx < 0 || idx >= NUM_VALUES);
+
+                cout << "Enter Value: ";
+                arr[idx] = readInt();
+                break;
+            }
+
+            case 2:
+                cout << endl;
+                for (int i = 0; i < NUM_VALUES; i++)
+                    cout << "nums[" << i << "] = " << arr[i]
+                         << " → sign = " << signOf(arr[i]) << endl;
+                break;
+
+            case 3: {
+                cout << "\nEnter First Number: ";
+                int a = readInt();
+                cout << "Enter Second Number: ";
+                int b = readInt();
+                cout << "Highest Value = " << maxOf(a, b) << endl;
+                break;
+            }
+
+            case 4:
+                cout << "\nTotal Sum = " << sumOf(arr) << endl;
+                break;
+
+            case 5:
+                cout << "\nAverage = "
+                     << static_cast<double>(sumOf(arr)) / NUM_VALUES
+                     << endl;
+                break;
+
+            default:
+                cout << "Invalid choice.\n";
+        }
     }
-    cout << "Average = " << static_cast<double>(sum) / size << endl;
 }
 
-// ===== MAIN FUNCTION =====
 int main() {
-    LoadInitialNumbers();
-    mainMenu();
+    int nums[NUM_VALUES];
+    loadNumbers(nums);
+    menu(nums);
     return 0;
 }
