@@ -51,7 +51,7 @@
 | [![Lesson 3 Badge][L3]](./lesson03/) | [![Lesson 8 Badge][L8]](./lesson08/) |
 | [![Lesson 4 Badge][L4]](./lesson04/) | [![Lesson 9 Badge][L9]](./lesson09/) |
 | [![Lesson 5 Badge][L5]](./lesson05/) | [![Lesson 10 Badge][L10]](./lesson10/) |
-| [![Midterm Badge][MID]](./midterm/) |
+| [![Midterm Badge][MID]](./midterm/) | [![Final Badge][FIN]](./final/) |
 
 ## 💽 Repositories
 <!-- Repository Cards from https://github.com/stats-organization/github-stats-extended -->
@@ -89,6 +89,7 @@
 
 <!-- Projects -->
 [MID]: https://custom-icon-badges.demolab.com/badge/Midterm_Project-2026?style=flat&logo=file-directory&logoColor=FFFFF0&labelColor=8C52FF&color=FFDE59
+[FIN]: https://custom-icon-badges.demolab.com/badge/Final_Project-2026?style=flat&logo=file-directory&logoColor=FFFFF0&labelColor=8C52FF&color=FFDE59
 
 <!-- Operating Systems -->
 [linux]: https://img.shields.io/badge/Linux_Mint-2026?logo=linuxmint&logoColor=FFFFF0&labelColor=8C52FF&color=FFDE59
