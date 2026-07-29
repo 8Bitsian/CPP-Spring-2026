@@ -50,8 +50,8 @@
 | [![Lesson 2 Badge][L2]](./lesson02/) | [![Lesson 7 Badge][L7]](./lesson07/) |
 | [![Lesson 3 Badge][L3]](./lesson03/) | [![Lesson 8 Badge][L8]](./lesson08/) |
 | [![Lesson 4 Badge][L4]](./lesson04/) | [![Lesson 9 Badge][L9]](./lesson09/) |
-| [![Lesson 5 Badge][L5]](./lesson05/) | [![Lesson 10 Badge][L10]](./lesson10/) |
-| [![Midterm Badge][MID]](./midterm/) | [![Final Badge][FIN]](./final/) |
+| [![Lesson 5 Badge][L5]](./lesson05/) | [![Final Badge][FIN]](./final/) |
+| [![Midterm Badge][MID]](./midterm/) | |
 
 ## 💽 Repositories
 <!-- Repository Cards from https://github.com/stats-organization/github-stats-extended -->
