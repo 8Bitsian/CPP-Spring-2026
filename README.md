@@ -107,7 +107,7 @@
 
 <!-- Programming Languages -->
 [t_lang]: https://custom-icon-badges.demolab.com/github/languages/count/8Bitsian/CPP-Spring-2026?style=flat&logo=code-square&logoColor=FFFFF0&label=Total%20Languages&labelColor=8C52FF&color=FFDE59
-[up_lang]: https://custom-icon-badges.demolab.com/github/languages/top/8Bitsian/CPP-Spring-2026?style=flat&logo=code-square&logoColor=FFFFF0&label=Top%20Language%20-%20C++&labelColor=8C52FF&color=FFDE59
+[up_lang]: https://custom-icon-badges.demolab.com/github/languages/top/8Bitsian/CPP-Spring-2026?style=flat&logo=code-square&logoColor=FFFFF0&label=Top%20Language%20-%20C%2B%2B&labelColor=8C52FF&color=FFDE59
 [cpp]: https://img.shields.io/badge/C%2B%2B-23?logo=cplusplus&logoColor=%23f6f4f0&labelColor=%238c52ff&color=%23ffde59
 
 <!-- Repositories -->
